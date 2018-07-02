@@ -1,23 +1,10 @@
-const pizza = {
-  name: "Pepperoni",
-  price: 15,
-  //Better way to define functions
-  getName() {
-    return this.name;
-  }
-};
-
-const toppings = ["pepperoni"];
-
-const order = { pizza, toppings };
-
-//Same as
-/*
-const order = { pizza: pizza, toppings:tp[] };
-*/
-
-function createOrder(pizza: any, toppings: any) {
-  return { pizza, toppings };
+//Rest parameters. As saying - give me rest of them.
+//Can also define some additional parameters first
+function sumAll(message, ...arr) {
+  console.log(message);
+  arr.reduce((prev, next) => prev + next);
 }
 
-console.log(createOrder(pizza, toppings));
+const sum = sumAll("Hello", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+console.log(sum);
