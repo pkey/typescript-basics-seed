@@ -1,10 +1,11 @@
-//No uppercase - use lowercase for primitives. Double quate also viable.
-const coupon: string = "pizza25";
+const pizzas: number = 5;
 
-//Useful to define in advance what to return and create a programmable interface.
-function normalizeCoupon(code: string): string {
-  return code.toUpperCase();
+function offerDiscount(orders: number): boolean {
+  return orders >= 3;
 }
 
-const couponMessage: string = `Final coupon is ${normalizeCoupon(coupon)}`;
-console.log(couponMessage);
+if (offerDiscount(pizzas)) {
+  console.log(`You're entitled to a discount!`);
+} else {
+  console.log(`Order more than 3 pizzas for a discount!`);
+}
