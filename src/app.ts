@@ -1,11 +1,18 @@
-const pizzas: number = 5;
+//Any type should be avoided.
+//Any type - infered type if nothing defined.
+//More liek pure javascript.
+let coupon;
 
-function offerDiscount(orders: number): boolean {
-  return orders >= 3;
-}
+//Even here type is till any
+coupon = 25;
 
-if (offerDiscount(pizzas)) {
-  console.log(`You're entitled to a discount!`);
-} else {
-  console.log(`Order more than 3 pizzas for a discount!`);
-}
+//Aaand it goes...
+coupon = "25";
+
+coupon = true;
+
+//But if you add type at the beginning - no kebab;
+
+//Use cases - transition from pure javascript;
+//Or when we want to opt out of typescript
+//Typescript - makes you better;
