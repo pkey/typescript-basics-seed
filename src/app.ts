@@ -1,27 +1,16 @@
-//import { something } from "somewhere"
+//Javascript has types such as new Number(); new Boolean() - didn't know.
 
-const pizza = {
-  name: "Pepperoni",
-  toppings: ["pepperoni"]
-};
+// let number = new Number(2);
+// console.log(number);
 
-//Useful when transforming variable names
-function order({ name: pizzaName, toppings: pizzaToppings }) {
-  return { pizzaName, pizzaToppings };
+//Typescript infer type for us if we don't define us. Number is for description.
+const pizzaCost: number = 10;
+const pizzaToppings: number = 2;
+
+//We can define what to return and it will check for it.
+function calculatePrice(cost: number, toppings: number): number {
+  return cost + 1.5 * toppings;
 }
 
-//Same syntax as importing from somewhere. Basically you are just asking for some of the parameters.
-const { pizzaName } = order(pizza);
-console.log(pizzaName);
-
-const toppings = ["pepperoni", "bacon", "chilli"];
-
-//const [first, second, third] = toppings;
-
-//OR
-
-function logToppings([first, second]: any) {
-  console.log(first, second);
-}
-
-logToppings(toppings);
+const cost: number = calculatePrice(pizzaCost, pizzaToppings);
+console.log(`Pizza costs: ${cost}`);
