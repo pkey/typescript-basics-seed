@@ -1,16 +1,10 @@
-//Javascript has types such as new Number(); new Boolean() - didn't know.
+//No uppercase - use lowercase for primitives. Double quate also viable.
+const coupon: string = "pizza25";
 
-// let number = new Number(2);
-// console.log(number);
-
-//Typescript infer type for us if we don't define us. Number is for description.
-const pizzaCost: number = 10;
-const pizzaToppings: number = 2;
-
-//We can define what to return and it will check for it.
-function calculatePrice(cost: number, toppings: number): number {
-  return cost + 1.5 * toppings;
+//Useful to define in advance what to return and create a programmable interface.
+function normalizeCoupon(code: string): string {
+  return code.toUpperCase();
 }
 
-const cost: number = calculatePrice(pizzaCost, pizzaToppings);
-console.log(`Pizza costs: ${cost}`);
+const couponMessage: string = `Final coupon is ${normalizeCoupon(coupon)}`;
+console.log(couponMessage);
