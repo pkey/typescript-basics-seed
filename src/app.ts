@@ -1,17 +1,13 @@
-//Strict type checking restricts as from assigning null to already assigned values of other type
+let pizzaSize: string = "small";
 
-// in tsconfig - strictNullCheck = true || strict = true
-// We are overriding javascripts default behavior.
+//With a union operator you can actually define what kind of variable to you want to receive.
 
-//May use pipe operator to indicate that it can actually be null. Called union types
-let coupon: string | null | undefined = "pizza25";
-
-function removeCoupon(): void {
-  coupon = undefined;
+//Nothing of this gets translated to plain javascript. It's just a build step process.
+//Works with number as well.
+function selectSize(size: "small" | "medium" | "large"): void {
+  pizzaSize = size;
 }
 
-console.log(coupon);
+selectSize("medium");
 
-removeCoupon();
-
-console.log(coupon);
+console.log(pizzaSize);
