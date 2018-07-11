@@ -1,12 +1,17 @@
-//Never type - value will never occur.
+//Strict type checking restricts as from assigning null to already assigned values of other type
 
-//We can return never when we a re sure that the funciton will never return anything.
-function orderError(error: string): never {
-  throw new Error(error);
-  // never going to return a value!
+// in tsconfig - strictNullCheck = true || strict = true
+// We are overriding javascripts default behavior.
+
+//May use pipe operator to indicate that it can actually be null. Called union types
+let coupon: string | null | undefined = "pizza25";
+
+function removeCoupon(): void {
+  coupon = undefined;
 }
 
-//Never means that there is unreachable code in our application. Like while true
-orderError("Something went rwing.");
+console.log(coupon);
 
-//Seems that it's not often used. And also better used when throwing errors or sth.
+removeCoupon();
+
+console.log(coupon);
