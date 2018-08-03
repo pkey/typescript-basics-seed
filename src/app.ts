@@ -1,15 +1,9 @@
-//It's possible to inline this kind of things, nice!
+let sizes: string[];
 
-let pizza: {
-  name: string;
-  price: number;
-  getName(): string;
-} = {
-  name: "Plain Old Pepperoni",
-  price: 20,
-  getName() {
-    return pizza.name;
-  }
-};
+sizes = ["small", "medium", "large"];
 
-console.log(pizza.getName());
+//You see a generic type. We can create our own generic types.
+//Using when we work with third party libs, obeservalbes, promises,
+let toppings: Array<string>;
+
+toppings = ["pepperoni", "tomato", "bacon"];
