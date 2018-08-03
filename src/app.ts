@@ -1,12 +1,15 @@
-//More readable approach to let typescript compiler know that we did this intentionaly
-let sumOrder: (price: number, quantity?: number) => number;
+//It's possible to inline this kind of things, nice!
 
-sumOrder = (x, y = 1) => {
-  return x * y;
-  // const q = y || 1; //Or parameter assigns that one if y is undefined
-  // return x * q;
+let pizza: {
+  name: string;
+  price: number;
+  getName(): string;
+} = {
+  name: "Plain Old Pepperoni",
+  price: 20,
+  getName() {
+    return pizza.name;
+  }
 };
 
-const sum = sumOrder(25, 2);
-
-console.log(`Total sum: ${sum}`);
+console.log(pizza.getName());
