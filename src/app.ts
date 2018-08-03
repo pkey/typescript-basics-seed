@@ -1,14 +1,17 @@
-/*Tuples can be a good use case for Google Maps Api, or third party lib or your own api
-when you don't always get back array of objects
-*/
+//Type alias or type keyword
+// Any kind of type can be assigned to type alias
+//Types are virtual and only used by typescript compiles
 
-//Use when you absolutely know that the data structure is going to definitely be like this.
-//It's like union type but inside the array.
-let pizza: [string, number, boolean];
+//Types alias can be used for the reusable aliases and definitions for types
+//let pizzaSize: 'small' | 'medium' | 'large' = 'small';
 
-pizza = ["Pepperoni", 20, true];
+type Size = "small" | "medium" | "large";
+type Callback = (size: Size) => void;
 
-//This is with or operator - allows more flexibility
-let something: (number | string)[];
+let pizzaSize: Size = "small";
 
-something = ["string", 2];
+const selectSize: Callback = x => {
+  pizzaSize = x;
+};
+
+selectSize("medium");
