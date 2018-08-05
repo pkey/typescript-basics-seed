@@ -1,11 +1,14 @@
-//Interfaces also allow us to define what functions return
-interface Pizza {
-  name: string;
+//We can also extend interfaces, implements them, etc.
+interface Sizes {
   sizes: string[];
-  getAvailableSizes(): string[]; //One way of doing this
 }
 
-type getAvailableSizes = () => string[]; //Another way of doing the same thing
+//So the sizes property is added to the Pizza - I don't think that is empirically correct.
+interface Pizza extends Sizes {
+  name: string;
+  getAvailableSizes(): void;
+}
+
 let pizza: Pizza;
 
 function createPizza(name: string, sizes: string[]): Pizza {
@@ -16,7 +19,6 @@ function createPizza(name: string, sizes: string[]): Pizza {
       return this.sizes;
     }
   };
-  // also pissible: as Pizza;
 }
 
 pizza = createPizza("Pepperoni", ["small", "medium"]);
