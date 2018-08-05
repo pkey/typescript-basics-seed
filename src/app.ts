@@ -1,18 +1,30 @@
-type Pizza = { name: string; toppings: number };
+/*Interface is more prefered approach when we are dealing
+ with more complex datastructures or datasets compared to types.
+ */
+//type Pizza = {
 
-const pizza: Pizza = { name: "Blazing Inferno", toppings: 5 };
+//Interface is extendable compared to a type
+//Allows us to define structure or shape of a object
 
-//When we don't know what ype ar we getting from somewhere, and then we can convert.
-
-const serialized = JSON.stringify(pizza);
-
-function getNameFromJSON(obj: string) {
-  //Old way of "enabling" autocompletion
-  //return (<Pizza>JSON.parse(obj)).name;
-
-  //New way of doing the same thing
-  return (JSON.parse(obj) as Pizza).name;
+//Interface is prefered way to create a cotract btw variable and shape of it, telling how it looks like.
+interface Pizza {
+  name: string;
+  sizes: string[];
 }
 
-//Here you get autocompletion
-getNameFromJSON(serialized);
+//Interfaces can be combined
+interface Pizzas {
+  data: Pizza[];
+}
+
+let pizza: Pizza;
+
+function createPizza(name: string, sizes: string[]): Pizza {
+  //Shorthand syntax of creating object literals under the same name
+  return {
+    name,
+    sizes
+  };
+}
+
+pizza = createPizza("Pepperoni", ["small", "medium"]);
