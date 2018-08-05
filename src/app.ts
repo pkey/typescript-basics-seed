@@ -1,7 +1,6 @@
-//Abtract class cannot be instantiated. Indicating that we want just to extends this class.
-//We can esport abtract classes as well.
 abstract class Sizes {
-  constructor(public sizes: string[]) {}
+  //Can access private methods when we extends the class. That's what protected is.
+  constructor(protected sizes: string[]) {}
 
   set availableSizes(sizes: string[]) {
     this.sizes = sizes;
@@ -12,13 +11,15 @@ abstract class Sizes {
   }
 }
 
-//Cannot do this thing then.
-//new Sizes(["small"]);
 class Pizza extends Sizes {
   public toppings: string[] = [];
 
-  constructor(readonly name: string, public sizes: string[]) {
+  constructor(readonly name: string, sizes: string[]) {
     super(sizes);
+  }
+
+  public updateSizes(sizes: string[]) {
+    this.sizes = sizes;
   }
 
   addTopping(topping: string) {
@@ -27,6 +28,9 @@ class Pizza extends Sizes {
 }
 
 const pizza = new Pizza("Pepperoni", ["small", "medium"]);
+
 console.log(pizza.availableSizes);
 
-pizza.addTopping("pepperoni");
+pizza.updateSizes(["large"]);
+
+console.log(pizza.availableSizes);
