@@ -1,4 +1,6 @@
-class Sizes {
+//Abtract class cannot be instantiated. Indicating that we want just to extends this class.
+//We can esport abtract classes as well.
+abstract class Sizes {
   constructor(public sizes: string[]) {}
 
   set availableSizes(sizes: string[]) {
@@ -10,13 +12,11 @@ class Sizes {
   }
 }
 
-//Possible to extend - still I don't think that's how it works, no?
-//Sizes cannot beb a base class;
+//Cannot do this thing then.
+//new Sizes(["small"]);
 class Pizza extends Sizes {
   public toppings: string[] = [];
 
-  //Are sizes automatically attached to a Pizza class here?
-  //Answer - yes, they are shown on javascript raw file.
   constructor(readonly name: string, public sizes: string[]) {
     super(sizes);
   }
