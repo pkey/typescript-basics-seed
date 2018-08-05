@@ -1,11 +1,10 @@
-//We can also extend interfaces, implements them, etc.
 interface Sizes {
   sizes: string[];
 }
 
-//So the sizes property is added to the Pizza - I don't think that is empirically correct.
 interface Pizza extends Sizes {
   name: string;
+  toppings?: number; //Toppings is optional - yay!
   getAvailableSizes(): void;
 }
 
@@ -22,3 +21,5 @@ function createPizza(name: string, sizes: string[]): Pizza {
 }
 
 pizza = createPizza("Pepperoni", ["small", "medium"]);
+
+pizza.toppings = 1;
