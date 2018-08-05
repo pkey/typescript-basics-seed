@@ -1,31 +1,32 @@
-//Dictionary or data structure as dictionary
-interface Sizes {
-  sizes: string[];
+class Pizza {
+  name: string; //You need to declare variables here in TS.
+  toppings: string[] = []; //Defaulting at the top
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  addTopping(topping: string) {
+    this.toppings.push(topping);
+  }
 }
 
-interface Pizza extends Sizes {
-  name: string;
-  toppings?: number;
-  getAvailableSizes(): void;
-  [key: number]: string; //Added index signature. And they can be looked up dynamically
-  //"1" will be stored as string anyways, regardless of what's defined here.
-  dictionary?: {
-    [key: string]: any;
-  }; //Also possible to nest
+/* Classical way of doing thing
+
+function Pizza(name: string) {
+  this.name = name; //Works when disabling strict.
+  this.toppings = [];
 }
 
-let pizza: Pizza;
+//Possible to add functions on a prototype
+Pizza.prototype.addTopping = function addTopping(topping: string) {
+  this.toppings.push(topping);
+};
 
-function createPizza(name: string, sizes: string[]): Pizza {
-  return {
-    name,
-    sizes,
-    getAvailableSizes() {
-      return this.sizes;
-    }
-  };
-}
+*/
 
-pizza = createPizza("Pepperoni", ["small", "medium"]);
-pizza[1] = "xyz";
-pizza.toppings = 1;
+const pizza = new Pizza("Pepperoni");
+
+pizza.addTopping("pepperoni");
+
+console.log(pizza);
