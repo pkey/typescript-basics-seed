@@ -1,17 +1,12 @@
-//Type alias or type keyword
-// Any kind of type can be assigned to type alias
-//Types are virtual and only used by typescript compiles
+type Pizza = { name: string; toppings: number };
 
-//Types alias can be used for the reusable aliases and definitions for types
-//let pizzaSize: 'small' | 'medium' | 'large' = 'small';
+let pizza: Pizza = { name: "pepperoni", toppings: 5 };
 
-type Size = "small" | "medium" | "large";
-type Callback = (size: Size) => void;
+let serialized = JSON.stringify(pizza);
 
-let pizzaSize: Size = "small";
+//If we know what we might be getting (as from stringified JSON), we might tell compiler to parse it as that type and it becomes happy
+function getNameFromJson(obj: string) {
+  return (JSON.parse(obj) as Pizza).name;
+}
 
-const selectSize: Callback = x => {
-  pizzaSize = x;
-};
-
-selectSize("medium");
+console.log(getNameFromJson(serialized));
